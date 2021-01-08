@@ -1,0 +1,19 @@
+version: "3.8"
+services: 
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    #environment: 
+    #  MONGO_INITDB_ROOT_USERNAME: max
+    #  MONGO_INITDB_ROOT_PASSWORD: secret
+    #  - MONGO_INITDB_ROOT_USERNAME=max
+    #  - MONGO_INITDB_ROOT_PASSWORD=secret
+    env_file:
+      - ./env/mongo.env
+    # no need to define networkds bc docker compose automatically creates an environment per docker-compose file, If you specify networks here, they will be additional do the automatic one.
+  #backend:
+  #frontend:
+# named volumes within services must also be listed here: (anonymous volumes and bind mounts do not need this)
+volumes:
+  data:
